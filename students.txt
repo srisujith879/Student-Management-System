@@ -1,0 +1,2 @@
+2412154,sujth,18,male,cse,9.9
+2412152,sanjana,18,female,ce,9.3
