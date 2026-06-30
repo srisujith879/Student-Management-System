@@ -1,50 +1,62 @@
-# 🎓 Student Management System (C++)
+# 🎓 Student Management System
 
-A console-based Student Management System developed in **C++** using **Object-Oriented Programming (OOP)** concepts. This application allows an administrator to manage student records efficiently with permanent file storage.
+A modern **Student Management System** built using **C++**, **Crow Framework**, **SQLite**, **HTML**, **CSS**, **JavaScript**, and **CMake**. The application provides a clean web interface for managing student records with secure database storage.
 
 ---
 
-## 📌 Features
+## 🚀 Features
+
+### 🔐 Authentication
+- Admin Login
+- Username & Password Verification
+- Secure Login System
 
 ### 👨‍🎓 Student Management
-- Add Student
-- View All Students
-- Search Student by Roll Number
-- Update Student Details
-- Delete Student
+- ➕ Add Student
+- 📋 View Students
+- 🔍 Search Student
+- ✏️ Update Student
+- 🗑️ Delete Student
 
-### 💾 File Handling
-- Save Student Records to File
-- Load Student Records Automatically
-- Permanent Data Storage using `students.txt`
+### 💾 Database
+- SQLite Database Integration
+- Permanent Data Storage
+- Automatic Table Creation
+- Prepared SQL Statements
 
-### 📊 Reports
-- Total Number of Students
-- Highest CGPA
-- Lowest CGPA
+### 🌐 Modern Web Interface
+- Responsive Dashboard
+- Professional UI
+- Responsive Forms
+- Search & Update Layout
+- Delete Confirmation
+- Dashboard Navigation
+
+### 📊 Reports *(Under Development)*
+- Total Students
 - Average CGPA
-
-### 🔍 Sorting
-- Sort by Roll Number
-- Sort by Name
-- Sort by CGPA
-
-### 🔒 Authentication
-- Admin Login
-
-### ✅ Validation
-- Duplicate Roll Number Check
-- Age Validation
-- CGPA Validation
+- Highest CGPA
+- Department-wise Statistics
 
 ---
 
-# 🛠 Technologies Used
+# 🛠️ Technologies Used
 
+## Backend
 - C++
+- Crow Framework
+- SQLite3
+- CMake
+
+## Frontend
+- HTML5
+- CSS3
+- JavaScript
+
+## Programming Concepts
 - Object-Oriented Programming
-- STL (Vector, Algorithm)
-- File Handling (`fstream`)
+- REST API
+- JSON Handling
 - Modular Programming
 
 ---
@@ -54,44 +66,91 @@ A console-based Student Management System developed in **C++** using **Object-Or
 ```
 StudentManagementSystem/
 │
-├── main.cpp
-├── Person.h
-├── Person.cpp
-├── Student.h
-├── Student.cpp
-├── StudentManager.h
-├── StudentManager.cpp
-├── LoginManager.h
-├── LoginManager.cpp
-├── students.txt
+├── include/
+│   ├── Database.h
+│   ├── LoginManager.h
+│   ├── Person.h
+│   ├── Routes.h
+│   ├── Student.h
+│   └── StudentManager.h
+│
+├── src/
+│   ├── Database.cpp
+│   ├── LoginManager.cpp
+│   ├── Person.cpp
+│   ├── Routes.cpp
+│   ├── Student.cpp
+│   ├── StudentManager.cpp
+│   └── web_main.cpp
+│
+├── templates/
+│   ├── login.html
+│   ├── dashboard.html
+│   ├── addStudent.html
+│   ├── viewStudents.html
+│   ├── searchStudent.html
+│   ├── updateStudent.html
+│   ├── deleteStudent.html
+│   └── reports.html
+│
+├── static/
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── app.js
+│
+├── students.db
+├── CMakeLists.txt
 └── README.md
+```
+
+---
+
+# 🏗️ System Architecture
+
+```
+Browser
+      │
+      ▼
+HTML • CSS • JavaScript
+      │
+      ▼
+Crow Framework (C++)
+      │
+      ▼
+Database Layer
+      │
+      ▼
+SQLite Database
 ```
 
 ---
 
 # 📚 OOP Concepts Used
 
-### Encapsulation
-- Private data members
-- Public getters and setters
+### ✅ Encapsulation
+- Database Class
+- Student Class
+- LoginManager
+- StudentManager
 
-### Inheritance
+### ✅ Inheritance
 - `Student` inherits from `Person`
 
-### Abstraction
-- Each class performs a specific responsibility
+### ✅ Abstraction
+- Database operations are hidden inside the Database class.
 
-### Polymorphism
-- Virtual destructor in the `Person` class
+### ✅ Polymorphism
+- Virtual destructor in the Person class.
 
-### Constructors & Destructors
-- Default Constructor
-- Parameterized Constructor
-- Destructor
+### ✅ Modular Programming
+- Separate Header Files
+- Separate Source Files
+- Dedicated Route Management
 
 ---
 
-# 📁 Data Stored
+# 💾 Student Information
 
 Each student record contains:
 
@@ -104,45 +163,83 @@ Each student record contains:
 
 ---
 
-# 🚀 How to Compile
-
-Using **clang++**
+# 🚀 How to Build
 
 ```bash
-clang++ -std=c++17 *.cpp -o program
-```
+mkdir build
 
-Run
+cd build
 
-```bash
-./program
+cmake ..
+
+cmake --build .
 ```
 
 ---
 
-# 📋 Main Menu
+# ▶️ Run
+
+```bash
+./StudentManagementSystem
+```
+
+Open your browser:
 
 ```
-1. Add Student
-2. View Students
-3. Search Student
-4. Update Student
-5. Delete Student
-6. Reports
-7. Exit
+http://localhost:18080
 ```
 
 ---
 
-# 💾 File Storage
+# 🔑 Default Login
 
-Student data is stored in
+| Username | Password |
+|----------|----------|
+| admin | admin123 |
 
-```
-students.txt
-```
+---
 
-Data is automatically loaded when the program starts and saved when the program exits.
+# 📸 Screenshots
+
+## Login Page
+
+![Login](images/login.png)
+
+---
+
+## Dashboard
+
+![Dashboard](images/dashboard.png)
+
+---
+
+## Add Student
+
+![Add Student](images/addStudent.png)
+
+---
+
+## View Students
+
+![View Students](images/viewStudents.png)
+
+---
+
+## Search Student
+
+![Search Student](images/searchStudent.png)
+
+---
+
+## Update Student
+
+![Update Student](images/updateStudent.png)
+
+---
+
+## Delete Student
+
+![Delete Student](images/deleteStudent.png)
 
 ---
 
@@ -151,35 +248,32 @@ Data is automatically loaded when the program starts and saved when the program 
 This project demonstrates:
 
 - Object-Oriented Programming
-- Inheritance
-- Encapsulation
-- STL (`vector`)
-- File Handling
-- Searching Algorithms
-- Sorting Algorithms
-- Input Validation
-- Modular Programming
-- Console-Based Application Development
+- C++ Web Development
+- Crow Framework
+- SQLite Database
+- REST API Development
+- CRUD Operations
+- HTML
+- CSS
+- JavaScript
+- CMake Build System
+- Responsive UI Design
+- Database Connectivity
+- MVC-style Project Structure
 
 ---
 
-# 📸 Sample Output
+# 🔮 Future Improvements
 
-```
-=====================================
-     STUDENT MANAGEMENT SYSTEM
-=====================================
-
-1. Add Student
-2. View Students
-3. Search Student
-4. Update Student
-5. Delete Student
-6. Reports
-7. Exit
-
-Enter Your Choice:
-```
+- Session-Based Authentication
+- Dashboard Analytics
+- Student Image Upload
+- Attendance Management
+- Department Management
+- Export to CSV/PDF
+- Pagination
+- Search Filters
+- Role-Based Access
 
 ---
 
@@ -187,8 +281,12 @@ Enter Your Choice:
 
 **Sujith Batchu**
 
+B.Tech – Computer Science & Engineering
+
+National Institute of Technology Silchar
+
 ---
 
 # 📄 License
 
-This project is created for educational and learning purposes.
+This project is developed for educational and learning purposes.
