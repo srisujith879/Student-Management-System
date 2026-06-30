@@ -51,9 +51,9 @@ string Person::getGender() const
 // Display
 void Person::displayPerson() const
 {
-    cout << "Name   : " << name << endl;
-    cout << "Age    : " << age << endl;
-    cout << "Gender : " << gender << endl;
+    cout << "Name        : " << name << endl;
+    cout << "Age         : " << age << endl;
+    cout << "Gender      : " << gender << endl;
 }
 
 // Destructor

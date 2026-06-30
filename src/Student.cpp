@@ -1,5 +1,6 @@
 #include "Student.h"
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -58,11 +59,17 @@ float Student::getCGPA() const
 // Display
 void Student::displayStudent() const
 {
+    cout << "\n==================================================\n";
+    cout << "               STUDENT DETAILS\n";
+    cout << "==================================================\n";
+
     displayPerson();
 
-    cout << "Roll No    : " << rollNumber << endl;
-    cout << "Department : " << department << endl;
-    cout << "CGPA       : " << cgpa << endl;
+    cout << "Roll Number : " << rollNumber << endl;
+    cout << "Department  : " << department << endl;
+    cout << "CGPA        : " << fixed << setprecision(2) << cgpa << endl;
+
+    cout << "==================================================\n";
 }
 
 // Destructor

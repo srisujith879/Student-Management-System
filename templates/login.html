@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <h1>Student Management System</h1>
+
+        <h3>Admin Login</h3>
+
+        <input id="username" type="text" placeholder="Username">
+
+        <input id="password" type="password" placeholder="Password">
+
+        <button onclick="login()">Login</button>
+
+    </div>
+
+</div>
+
+<script>
+
+async function login()
+{
+    const response = await fetch("/api/login",
+    {
+        method: "POST",
+
+        headers:
+        {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(
+        {
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value
+        })
+    });
+
+    if(response.status == 200)
+    {
+        window.location.href = "/dashboard";
+    }
+    else
+    {
+        alert("Invalid Username or Password");
+    }
+}
+
+</script>
+
+</body>
+
+</html>

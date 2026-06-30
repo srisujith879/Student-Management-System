@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <div class="form-card">
+
+        <h1>Add Student</h1>
+
+        <input id="roll" type="number" placeholder="Roll Number">
+
+        <input id="name" type="text" placeholder="Student Name">
+
+        <input id="age" type="number" placeholder="Age">
+
+        <input id="gender" type="text" placeholder="Gender">
+
+        <input id="department" type="text" placeholder="Department">
+
+        <input id="cgpa" type="number" step="0.01" placeholder="CGPA">
+
+        <button onclick="addStudent()">Add Student</button>
+
+    </div>
+
+</div>
+
+<script>
+
+async function addStudent()
+{
+    const data =
+    {
+        roll: Number(document.getElementById("roll").value),
+        name: document.getElementById("name").value,
+        age: Number(document.getElementById("age").value),
+        gender: document.getElementById("gender").value,
+        department: document.getElementById("department").value,
+        cgpa: Number(document.getElementById("cgpa").value)
+    };
+
+    const response = await fetch("/api/addStudent",
+    {
+        method: "POST",
+
+        headers:
+        {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(data)
+    });
+
+    alert(await response.text());
+}
+
+</script>
+
+</body>
+</html>

@@ -20,18 +20,19 @@ if (!login.login())
 
     do
     {
-        cout << "\n=====================================\n";
-        cout << "     STUDENT MANAGEMENT SYSTEM\n";
-        cout << "=====================================\n";
-        cout << "1. Add Student\n";
-        cout << "2. View Students\n";
-        cout << "3. Search Student\n";
-        cout << "4. Update Student\n";
-        cout << "5. Delete Student\n";
-cout << "6. Reports\n";
-cout << "7. Exit\n";
-        cout << "=====================================\n";
-        cout << "Enter Your Choice: ";
+        cout << "\n";
+cout << "=========================================================\n";
+cout << "             STUDENT MANAGEMENT SYSTEM\n";
+cout << "=========================================================\n";
+cout << " 1. Add Student\n";
+cout << " 2. View Students\n";
+cout << " 3. Search Student\n";
+cout << " 4. Update Student\n";
+cout << " 5. Delete Student\n";
+cout << " 6. Reports\n";
+cout << " 7. Exit\n";
+cout << "=========================================================\n";
+cout << "Enter Your Choice : ";
         cin >> choice;
 
         switch (choice)

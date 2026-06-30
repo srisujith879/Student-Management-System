@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Student</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <div class="form-card">
+
+        <h1>Delete Student</h1>
+
+        <input id="roll" type="number" placeholder="Enter Roll Number">
+
+        <button onclick="loadStudent()">Load Student</button>
+
+        <br><br>
+
+        <table id="studentTable" style="display:none;width:100%;">
+
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+
+            <tr><td>Roll</td><td id="rRoll"></td></tr>
+            <tr><td>Name</td><td id="rName"></td></tr>
+            <tr><td>Age</td><td id="rAge"></td></tr>
+            <tr><td>Gender</td><td id="rGender"></td></tr>
+            <tr><td>Department</td><td id="rDepartment"></td></tr>
+            <tr><td>CGPA</td><td id="rCgpa"></td></tr>
+
+        </table>
+
+        <br>
+
+        <button onclick="deleteStudent()">Delete Student</button>
+
+    </div>
+
+</div>
+
+<script>
+
+async function loadStudent()
+{
+    let roll=document.getElementById("roll").value;
+
+    let response=await fetch("/api/searchStudent?roll="+roll);
+
+    let data=await response.json();
+
+    document.getElementById("studentTable").style.display="table";
+
+    document.getElementById("rRoll").innerHTML=data.roll;
+    document.getElementById("rName").innerHTML=data.name;
+    document.getElementById("rAge").innerHTML=data.age;
+    document.getElementById("rGender").innerHTML=data.gender;
+    document.getElementById("rDepartment").innerHTML=data.department;
+    document.getElementById("rCgpa").innerHTML=data.cgpa;
+}
+
+async function deleteStudent()
+{
+    if(!confirm("Are you sure you want to delete this student?"))
+        return;
+
+    let response=await fetch("/api/deleteStudent",{
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+            roll:Number(document.getElementById("roll").value)
+        })
+
+    });
+
+    alert(await response.text());
+
+    document.getElementById("studentTable").style.display="none";
+}
+
+</script>
+
+</body>
+</html>

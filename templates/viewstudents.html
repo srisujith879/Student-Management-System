@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>View Students</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+<div class="table-container">
+
+<h1>All Students</h1>
+
+<input
+id="search"
+type="text"
+placeholder="Search by Name or Department..."
+onkeyup="searchStudent()">
+
+<br><br>
+
+<h3>Total Students : <span id="count">0</span></h3>
+
+<br>
+
+<table id="studentTable">
+
+<thead>
+
+<tr>
+
+<th>Roll</th>
+<th>Name</th>
+<th>Age</th>
+<th>Gender</th>
+<th>Department</th>
+<th>CGPA</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tbody">
+
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+async function loadStudents()
+{
+    let response = await fetch("/api/students");
+
+    let students = await response.json();
+
+    let html="";
+
+    for(let s of students)
+    {
+        html+=`
+        <tr>
+            <td>${s.roll}</td>
+            <td>${s.name}</td>
+            <td>${s.age}</td>
+            <td>${s.gender}</td>
+            <td>${s.department}</td>
+            <td>${s.cgpa}</td>
+        </tr>
+        `;
+    }
+
+    document.getElementById("tbody").innerHTML=html;
+
+    document.getElementById("count").innerHTML=students.length;
+}
+
+function searchStudent()
+{
+    let input=document.getElementById("search").value.toLowerCase();
+
+    let rows=document.querySelectorAll("#tbody tr");
+
+    rows.forEach(row=>{
+
+        let text=row.innerText.toLowerCase();
+
+        row.style.display=text.includes(input)?"":"none";
+
+    });
+
+}
+
+loadStudents();
+
+</script>
+
+</body>
+
+</html>
