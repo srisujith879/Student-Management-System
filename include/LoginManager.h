@@ -9,6 +9,6 @@ class LoginManager
 {
 public:
     bool login();
-};
+}; 
 
 #endif
