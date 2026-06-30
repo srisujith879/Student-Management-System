@@ -199,6 +199,29 @@ http://localhost:18080
 
 ---
 
+# 🎥 Project Demo
+
+Watch the complete demonstration of the **Student Management System** on LinkedIn.
+
+[![Watch Project Demo](images/demo.png)](https://www.linkedin.com/posts/batchu-sri-sujith-46a6b0341_excited-to-share-a-demo-of-my-student-management-ugcPost-7477770582571270144-zMiL/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFW11ZIBfnFIHVe4rt_mBmr9LMnVsH8uIYk)
+
+> 💡 **Click the image above to watch the complete project demo.**
+
+### Demo Highlights
+
+- 🔐 Admin Login
+- ➕ Add Student
+- 📋 View Students
+- 🔍 Search Student
+- ✏️ Update Student
+- 🗑️ Delete Student
+- 💾 SQLite Database Integration
+- 🌐 Responsive Web Interface
+
+---
+
+# 📸 Screenshots
+
 # 📸 Screenshots
 
 ## Login Page
@@ -289,4 +312,5 @@ National Institute of Technology Silchar
 
 # 📄 License
 
+This project is developed for educational and learning purposes.
 This project is developed for educational and learning purposes.
