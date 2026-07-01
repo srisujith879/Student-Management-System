@@ -132,17 +132,22 @@ void registerRoutes(crow::SimpleApp& app, Database& database)
 
     // ---------------- View Students ----------------
 
-    CROW_ROUTE(app, "/api/students")
-([]()
+   CROW_ROUTE(app, "/api/students")
+([&database]()
 {
+    auto students = database.getAllStudents();
+
     crow::json::wvalue result;
 
-    result[0]["roll"] = 1;
-    result[0]["name"] = "Ganesh";
-    result[0]["age"] = 20;
-    result[0]["gender"] = "Male";
-    result[0]["department"] = "CSE";
-    result[0]["cgpa"] = 9.5;
+    for(size_t i = 0; i < students.size(); i++)
+    {
+        result[i]["roll"] = students[i].roll;
+        result[i]["name"] = students[i].name;
+        result[i]["age"] = students[i].age;
+        result[i]["gender"] = students[i].gender;
+        result[i]["department"] = students[i].department;
+        result[i]["cgpa"] = students[i].cgpa;
+    }
 
     return result;
 });
