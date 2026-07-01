@@ -3,13 +3,15 @@
 A modern **Student Management System** built using **C++**, **Crow Framework**, **SQLite**, **HTML**, **CSS**, **JavaScript**, and **CMake**. The application provides a clean web interface for managing student records with secure database storage.
 
 ---
+## 🌐 Live Demo
 
-## 🚀 Features
+🚀 **Try the live application here:**
 
-### 🔐 Authentication
-- Admin Login
-- Username & Password Verification
-- Secure Login System
+**https://student-management-system-vlx0.onrender.com/**
+
+> **Admin Credentials**
+> - Username: admin
+> - Password: admin123
 
 ### 👨‍🎓 Student Management
 - ➕ Add Student
