@@ -99,6 +99,11 @@ bool Database::addStudent(
 
     int rc = sqlite3_step(stmt);
 
+    std::cout << "Insert rc = " << rc
+          << "  Error = "
+          << sqlite3_errmsg(db)
+          << std::endl;
+
 if(rc != SQLITE_DONE)
 {
     std::cout << sqlite3_errmsg(db) << std::endl;
@@ -115,38 +120,66 @@ std::vector<Student> Database::getAllStudents()
 {
     std::vector<Student> students;
 
+    sqlite3_stmt* stmt;
+
     const char* sql =
         "SELECT roll,name,age,gender,department,cgpa FROM students;";
 
-    sqlite3_stmt* stmt;
-
     if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK)
-        return students;
-
-    while (sqlite3_step(stmt) == SQLITE_ROW)
     {
+        std::cout << sqlite3_errmsg(db) << std::endl;
+        return students;
+    }
+
+    while (true)
+    {
+        int rc = sqlite3_step(stmt);
+
+        std::cout << "sqlite3_step = " << rc << std::endl;
+
+        if (rc == SQLITE_DONE)
+            break;
+
+        if (rc != SQLITE_ROW)
+        {
+            std::cout << sqlite3_errmsg(db) << std::endl;
+            break;
+        }
+
         Student s;
 
-        s.roll = sqlite3_column_int(stmt, 0);
+        s.roll = sqlite3_column_int(stmt,0);
 
-        s.name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+        auto txt = sqlite3_column_text(stmt,1);
+        s.name = txt ? (const char*)txt : "";
 
-        s.age = sqlite3_column_int(stmt, 2);
+        s.age = sqlite3_column_int(stmt,2);
 
-        s.gender = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+        txt = sqlite3_column_text(stmt,3);
+        s.gender = txt ? (const char*)txt : "";
 
-        s.department = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
+        txt = sqlite3_column_text(stmt,4);
+        s.department = txt ? (const char*)txt : "";
 
-        s.cgpa = static_cast<float>(sqlite3_column_double(stmt, 5));
+        s.cgpa = sqlite3_column_double(stmt,5);
+
+        std::cout << "Fetched "
+                  << s.roll
+                  << " "
+                  << s.name
+                  << std::endl;
 
         students.push_back(s);
     }
 
     sqlite3_finalize(stmt);
 
+    std::cout << "Students found = "
+              << students.size()
+              << std::endl;
+
     return students;
 }
-
 Student Database::searchStudent(int roll)
 {
     Student s;
