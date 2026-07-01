@@ -8,7 +8,7 @@ int main()
 {
     Database database;
 
-    if (!database.open("../students.db"))
+    if (!database.open("students.db"))
         return 1;
 
     database.createTable();

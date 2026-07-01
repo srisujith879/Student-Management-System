@@ -26,7 +26,7 @@ void registerRoutes(crow::SimpleApp& app, Database& database)
     CROW_ROUTE(app, "/static/css/style.css")
 ([]()
 {
-    crow::response res(readFile("../static/css/style.css"));
+    crow::response res(readFile("static/css/style.css"));
     res.set_header("Content-Type", "text/css");
     return res;
 });
@@ -35,7 +35,7 @@ void registerRoutes(crow::SimpleApp& app, Database& database)
     CROW_ROUTE(app, "/")
     ([]()
     {
-        return readFile("../templates/login.html");
+        return readFile("templates/login.html");
     });
 
     // ---------------- Dashboard ----------------
@@ -43,7 +43,7 @@ void registerRoutes(crow::SimpleApp& app, Database& database)
     CROW_ROUTE(app, "/dashboard")
     ([]()
     {
-        return readFile("../templates/dashboard.html");
+        return readFile("templates/dashboard.html");
     });
 
     // ---------------- Pages ----------------
@@ -51,31 +51,31 @@ void registerRoutes(crow::SimpleApp& app, Database& database)
     CROW_ROUTE(app, "/addStudent")
     ([]()
     {
-        return readFile("../templates/addStudent.html");
+        return readFile("templates/addStudent.html");
     });
 
     CROW_ROUTE(app, "/viewStudents")
     ([]()
     {
-        return readFile("../templates/viewStudents.html");
+        return readFile("templates/viewStudents.html");
     });
 
     CROW_ROUTE(app, "/searchStudent")
     ([]()
     {
-        return readFile("../templates/searchStudent.html");
+        return readFile("templates/searchStudent.html");
     });
 
     CROW_ROUTE(app, "/updateStudent")
     ([]()
     {
-        return readFile("../templates/updateStudent.html");
+        return readFile("templates/updateStudent.html");
     });
 
     CROW_ROUTE(app, "/deleteStudent")
     ([]()
     {
-        return readFile("../templates/deleteStudent.html");
+        return readFile("templates/deleteStudent.html");
     });
 
     // ---------------- Login API ----------------
