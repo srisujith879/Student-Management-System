@@ -9,14 +9,16 @@ std::string readFile(const std::string& filename)
     std::ifstream file(filename);
 
     if (!file)
+    {
+        std::cerr << "❌ Cannot open file: " << filename << std::endl;
         return "<h1>File Not Found</h1>";
+    }
 
     std::stringstream buffer;
     buffer << file.rdbuf();
 
     return buffer.str();
 }
-
 
 void registerRoutes(crow::SimpleApp& app, Database& database)
 {
