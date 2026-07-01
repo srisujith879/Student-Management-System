@@ -6,11 +6,13 @@
 
 std::string readFile(const std::string& filename)
 {
+    std::cout << "Trying to open: " << filename << std::endl;
+
     std::ifstream file(filename);
 
     if (!file)
     {
-        std::cerr << "❌ Cannot open file: " << filename << std::endl;
+        std::cerr << "Cannot open: " << filename << std::endl;
         return "<h1>File Not Found</h1>";
     }
 
