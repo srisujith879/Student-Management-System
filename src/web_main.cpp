@@ -27,7 +27,7 @@ if (const char* env = std::getenv("PORT"))
 
 app.bindaddr("0.0.0.0")
    .port(port)
-   .multithreaded()
+   
    .run();
 
     return 0;
