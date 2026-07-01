@@ -25,5 +25,5 @@ add_executable(StudentManagementSystem
 target_link_libraries(StudentManagementSystem
     PRIVATE
     Crow
-    SQLite3::SQLite3
+    sqlite3
 )
